@@ -6,6 +6,18 @@ def is_safe(board, row, col):
             return False
     return True
 
+def print_board(board):
+    n = len(board)
+    for row in range(n):
+        line = ""
+        for col in range(n):
+            if board[row] == col:
+                line += "Q "
+            else:
+                line += ". "
+        print(line)
+    print("\n")
+
 def F1(board):
     conflicts = 0
     n = len(board)
@@ -94,13 +106,15 @@ def solve_queens_rbfs(preplaced):
     return solution, stats
 
 # Testing the Algorithms with Pre-Placed Queens
-preplaced_queens =  [(7, 0), (3, 3)]
+preplaced_queens =  [(0, 0)]
 
 print("LDFS Solution with Pre-Placed Queens:")
 # LDFS Solution
 ldfs_solution, ldfs_stats = solve_queens_ldfs(8, preplaced_queens)
 print(ldfs_solution, ldfs_stats)
+print_board(ldfs_solution)
 print("\nRBFS Solution with Pre-Placed Queens:")
 # RBFS Solution
 rbfs_solution, rbfs_stats = solve_queens_rbfs(preplaced_queens)
 print(rbfs_solution, rbfs_stats)
+print_board(ldfs_solution)
